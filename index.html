@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiniCity Traffic Simulator</title>
+    <!-- Modern Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Ionicons for beautiful simple icons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Panel for Tools -->
+        <aside class="sidebar glass-panel">
+            <header class="sidebar-header">
+                <h1>TraficoGT</h1>
+                <p>Simulador de Mini-Ciudad</p>
+            </header>
+
+            <div class="controls-section">
+                <h3>Herramientas</h3>
+                <div class="tools-grid">
+                    <button class="tool-btn active" id="tool-draw" title="Dibujar Calle">
+                        <ion-icon name="analytics-outline"></ion-icon>
+                        <span>Dibujar</span>
+                    </button>
+                    <button class="tool-btn" id="tool-erase" title="Borrar Calle">
+                        <ion-icon name="trash-outline"></ion-icon>
+                        <span>Borrar</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="controls-section properties-section">
+                <h3>Propiedades de Vía</h3>
+                <div class="control-group">
+                    <label for="lane-count">Carriles (por sentido)</label>
+                    <div class="stepper">
+                        <button class="stepper-btn" id="lane-decrease"><ion-icon name="remove-outline"></ion-icon></button>
+                        <span id="lane-count-display">1</span>
+                        <button class="stepper-btn" id="lane-increase"><ion-icon name="add-outline"></ion-icon></button>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label for="road-type">Dirección</label>
+                    <select id="road-type" class="glass-select">
+                        <option value="two-way">Doble Vía</option>
+                        <option value="one-way">Una Vía (A &rarr; B)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="controls-section simulation-controls">
+                <h3>Simulación</h3>
+                <div class="control-group">
+                    <label>Densidad de Tráfico</label>
+                    <input type="range" id="traffic-density" min="1" max="100" value="30">
+                </div>
+                <button class="action-btn play-btn" id="btn-toggle-sim">
+                    <ion-icon name="play-outline" id="sim-icon"></ion-icon>
+                    <span id="sim-text">Iniciar Tráfico</span>
+                </button>
+                <button class="action-btn danger-btn" id="btn-clear-all">
+                    <ion-icon name="warning-outline"></ion-icon>
+                    <span>Limpiar Ciudad</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Canvas Area -->
+        <main class="canvas-container">
+            <canvas id="city-canvas"></canvas>
+            <div class="status-bar glass-panel">
+                <span id="status-mode">Modo: Dibujar Calles</span>
+                <span id="status-coords">X: 0, Y: 0</span>
+                <span id="status-cars">Vehículos: 0</span>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
